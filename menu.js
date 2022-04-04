@@ -69,11 +69,8 @@ const pizza =
     Print the value of your new price variable.
 */
 
-let newPrice = 10
+const {price} = pizza
 
-pizza.price = newPrice
-
-// console.log(pizza.price)
 
 /*
     Fourth, and last, destructure the category
@@ -82,7 +79,10 @@ pizza.price = newPrice
     Print the value of your category variable. 
 */
 
-// console.log(pizza.category)
+const {category} = pizza
+
+
+// console.log(category)
 
 //////////////////PROBLEM 3////////////////////
 /* 
@@ -98,14 +98,47 @@ pizza.price = newPrice
 
 const foodArr = [
     {
-    name: 'Gorgeous Pie', 
-    price: 12.00,
-    category: 'Deep Dish',
+    name: 'Deep Dish Cheese', 
+    price: 12,
+    category: 'entree',
     popularity: 9,
     rating: 96,
-    tags: ['so thick', 'the cheese', 'oh god', 'yes'] 
-     }
+    tags: ['so thick', 'cheese', 'oh god', 'yes'] 
+     },
+
+    { name: 'Meat Lovers', 
+    price: 11,
+    category: 'entree',
+    popularity: 9,
+    rating: 96,
+    tags: ['meat', 'sausage', 'cheese', 'party']
+    },
+
+    { name: 'Cheese', 
+    price: 9,
+    category: 'entree',
+    popularity: 7,
+    rating: 96,
+    tags: ['plain', 'cheese', 'for kids', 'tasty']
+    },
+
+    { name: 'Supreme', 
+    price: 12,
+    category: 'entree',
+    popularity: 8,
+    rating: 96,
+    tags: ['veggies', 'the works', 'cheese', 'olives']
+    },
+
+    { name: 'Buffalo Chicken', 
+    price: 10.00,
+    category: 'entree',
+    popularity: 8.5,
+    rating: 96,
+    tags: ['spicy', 'savory', 'cheese', 'chicken']
+    }
 ]
+
 
 
 //////////////////PROBLEM 4////////////////////
@@ -120,8 +153,10 @@ const foodArr = [
     your food objects has.
 */
 
-const filteredFood = foodArr.filter(element => element === foodArr.category)
-// console.log(filteredFood(foodArr.filter))
+const filteredFood = foodArr.filter(pizzaObj => {
+    return pizzaObj.tags.includes('meat')
+})
+// console.log(filteredFood)
 
 
 //////////////////PROBLEM 5////////////////////
@@ -156,14 +191,23 @@ const filteredFood = foodArr.filter(element => element === foodArr.category)
         if it is, return objects whose value for the given
         property is greater than the `number` passed in
 
-        If the type isn't `below`, return objects whose
+        If the type is `below`, return objects whose
         value for the given property is less than the 
         `number` passed in
     
     Return the filtered array from the entire function
 */
 
-//CODE HERE
+const filterByProperty = (property, number, type) => {
+    const filteredArr = foodArr.filter(entree => {
+        if (type === 'above'){
+        return entree[property] > number
+        } else if (type === 'below'){
+        return entree[property] < number
+        }
+    })
+    return filteredArr
+}
 
 
 /*
@@ -173,4 +217,4 @@ const filteredFood = foodArr.filter(element => element === foodArr.category)
     You'll have to console.log to see the filtered array
 */
 
-//CODE HERE
+console.log(filterByProperty('price', 10, 'above'))

@@ -121,7 +121,8 @@ const deals = [
     to replace the 15 with a 10.
 */
 
-console.log(deals.replace('15%','10%'))
+deals[0].title = deals[0].title.replace('15', '10')
+console.log(deals)
 
 
 /*
@@ -137,3 +138,5 @@ console.log(deals.replace('15%','10%'))
     to be displaying wrong on the live site.
 */
 
+deals[1].desc = deals[1].desc.replace('March', 'April').trim()
+console.log(deals)
